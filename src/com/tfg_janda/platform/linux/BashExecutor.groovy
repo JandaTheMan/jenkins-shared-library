@@ -6,9 +6,18 @@ import com.tfg_janda.platform.IConsoleExecutor
 class BashExecutor implements IConsoleExecutor, Serializable {
 
     private _steps
+    private static _instance
 
-    BashExecutor(steps) {
+    private BashExecutor(steps) {
         this._steps = steps
+    }
+
+    static BashExecutor getInstance() {
+        _instance
+    }
+
+    def static setInstance(_steps) {
+        _instance = new BashExecutor(_steps)
     }
 
     @Override

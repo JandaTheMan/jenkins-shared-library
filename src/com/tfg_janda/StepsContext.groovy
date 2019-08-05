@@ -11,6 +11,7 @@ class StepsContext implements Serializable {
 
     StepsContext(steps) {
         this._steps = steps
+        BashExecutor.setInstance(_steps)
     }
 
     def setOs(String os) {
@@ -21,7 +22,7 @@ class StepsContext implements Serializable {
         def consoleExecutor
         switch (_os) {
             case 'linux':
-                consoleExecutor = new BashExecutor(this._steps)
+                consoleExecutor = BashExecutor.getInstance()
                 break
             default:
                 throw Exception('The Context must be initialized with OS')

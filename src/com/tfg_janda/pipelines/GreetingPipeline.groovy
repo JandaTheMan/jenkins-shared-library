@@ -1,0 +1,26 @@
+package com.tfg_janda.pipelines
+
+import com.tfg_janda.stages.GreetingStage
+
+class GreetingPipeline {
+
+    private _pipeline
+    private String _greetingMessage
+
+    GreetingPipeline(script, String node, String greetingMessage) {
+        _pipeline = new PipelineWrapper(
+                script,
+                node
+        )
+        _greetingMessage = greetingMessage
+    }
+
+    def run() {
+        _pipeline
+                .setUp('linux')
+                .addStageToNode(new GreetingStage('Custom Greeting', _greetingMessage), 'master')
+                .addStageToNode(new GreetingStage('Default Greeting'), 'master')
+                .exec()
+    }
+
+}

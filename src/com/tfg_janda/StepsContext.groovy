@@ -6,16 +6,21 @@ import com.tfg_janda.platform.linux.BashExecutor
 
 class StepsContext implements Serializable {
 
-    private _steps
+    private _scrip
     private _os
 
     StepsContext(steps) {
-        this._steps = steps
-        BashExecutor.setInstance(_steps)
+        this._scrip = steps
     }
 
-    def setOs(String os) {
+    StepsContext setOs(String os) {
         _os = os
+        this
+    }
+
+    StepsContext init() {
+        BashExecutor.setInstance(_scrip)
+        this
     }
 
     IConsoleExecutor getConsoleExecutor() {

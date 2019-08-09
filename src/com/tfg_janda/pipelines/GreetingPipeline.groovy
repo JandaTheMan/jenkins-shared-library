@@ -4,7 +4,7 @@ import com.tfg_janda.stages.GreetingStage
 
 class GreetingPipeline {
 
-    private _pipeline
+    private PipelineWrapper _pipeline
     private String _greetingMessage
 
     GreetingPipeline(script, String node, String greetingMessage) {

@@ -6,13 +6,14 @@ import com.tfg_janda.platform.IConsoleExecutor
 class BashExecutor implements IConsoleExecutor, Serializable {
 
     private _steps
-    private static _instance
+    private static BashExecutor _instance
 
     private BashExecutor(steps) {
         this._steps = steps
     }
 
-    static BashExecutor getInstance() {
+    static BashExecutor getInstance(script = null) {
+        if(_instance == null) _instance = new BashExecutor(script)
         _instance
     }
 
@@ -38,6 +39,6 @@ class BashExecutor implements IConsoleExecutor, Serializable {
 
     @Override
     def removeDirectoryFiles() {
-        this._steps.sh returnStatus: false, script: "find . -depth -type df -exec rm -rf  '{}' \\; "
+        this.exec("rm -rf ./*")
     }
 }

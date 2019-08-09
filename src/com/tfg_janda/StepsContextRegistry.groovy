@@ -12,7 +12,6 @@ class StepsContextRegistry implements Serializable {
         _context = new StepsContext(steps)
         _context.setOs(os)
                 .setScm(scm)
-                .init()
     }
 
     static StepsContext getContext() {

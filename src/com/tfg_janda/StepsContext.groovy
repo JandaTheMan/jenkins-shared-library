@@ -8,12 +8,12 @@ import com.tfg_janda.scm.git.GitScm
 
 class StepsContext implements Serializable {
 
-    private _scrip
+    private _script
     private _os
     private _scm
 
     StepsContext(steps) {
-        this._scrip = steps
+        this._script = steps
     }
 
     StepsContext setOs(String os) {
@@ -26,16 +26,11 @@ class StepsContext implements Serializable {
         this
     }
 
-    StepsContext init() {
-        BashExecutor.setInstance(_scrip)
-        this
-    }
-
     IConsoleExecutor getConsoleExecutor() {
         def consoleExecutor
         switch (_os) {
             case 'linux':
-                consoleExecutor = BashExecutor.getInstance()
+                consoleExecutor = BashExecutor.getInstance(this._script)
                 break
             default:
                 throw Exception('The Context must be initialized with OS')
@@ -47,7 +42,7 @@ class StepsContext implements Serializable {
         def sourceControlManager
         switch (_scm) {
             case 'git':
-                sourceControlManager = GitScm.getInstance()
+                sourceControlManager = GitScm.getInstance(this._script)
                 break
             default:
                 throw Exception('The Context must be initialized with SCM')

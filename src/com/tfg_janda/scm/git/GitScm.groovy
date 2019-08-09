@@ -5,13 +5,14 @@ import com.tfg_janda.scm.IScm
 class GitScm implements IScm{
 
     private _steps
-    private static _instance
+    private static GitScm _instance
 
     private GitScm(steps) {
         this._steps = steps
     }
 
-    static GitScm getInstance() {
+    static GitScm getInstance(script) {
+        if(_instance == null) _instance = new GitScm(script)
         _instance
     }
 

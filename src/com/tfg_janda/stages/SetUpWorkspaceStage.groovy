@@ -1,0 +1,30 @@
+package com.tfg_janda.stages
+
+import com.tfg_janda.StepsContextRegistry
+
+class SetUpWorkspaceStage extends BaseStage{
+
+    private String _gitRepo
+    private String _gitBranch
+    private String _gitCredentials
+
+    SetUpWorkspaceStage(String name, String gitRepo, String gitBranch, String gitCredentials) {
+        super(name)
+        _gitRepo = gitRepo
+        _gitBranch = gitBranch
+        _gitCredentials = gitCredentials
+    }
+
+    @Override
+    def stageSteps() {
+        def context = StepsContextRegistry.getContext()
+        def bash = context.getConsoleExecutor()
+        def git = context.getSourceControlManager()
+
+        //Remove all items from working directory
+        bash.removeDirectoryFiles()
+
+        //Download the git project and checkout branch
+        git.cloneAndCheckout(_gitRepo, _gitBranch, _gitCredentials)
+    }
+}

@@ -35,4 +35,9 @@ class BashExecutor implements IConsoleExecutor, Serializable {
         def command = 'echo "' + message + '"'
         this.exec(command)
     }
+
+    @Override
+    def removeDirectoryFiles() {
+        this._steps.sh returnStatus: false, script: "find . -depth -type df -exec rm -rf  '{}' \\; "
+    }
 }

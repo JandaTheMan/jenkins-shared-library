@@ -8,4 +8,5 @@ interface IConsoleExecutor {
 
     void printMessage(String message)
 
+    def removeDirectoryFiles()
 }

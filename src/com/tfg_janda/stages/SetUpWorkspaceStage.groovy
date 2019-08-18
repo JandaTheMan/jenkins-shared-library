@@ -17,14 +17,15 @@ class SetUpWorkspaceStage extends BaseStage{
 
     @Override
     def stageSteps() {
+
         def context = StepsContextRegistry.getContext()
-        def bash = context.getConsoleExecutor()
-        def git = context.getSourceControlManager()
+        def console = context.getConsoleExecutor()
+        def scm = context.getSourceControlManager()
 
         //Remove all items from working directory
-        bash.removeDirectoryFiles()
+        console.removeDirectoryFiles()
 
         //Download the git project and checkout branch
-        git.cloneAndCheckout(_gitRepo, _gitBranch, _gitCredentials)
+        scm.cloneAndCheckout(_gitRepo, _gitBranch, _gitCredentials)
     }
 }

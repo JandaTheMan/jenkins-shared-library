@@ -1,6 +1,7 @@
 package com.tfg_janda.pipelines
 
 import com.tfg_janda.StepsContextRegistry
+import com.tfg_janda.console.OsTypes
 import com.tfg_janda.stages.IStage
 
 /**
@@ -25,7 +26,7 @@ class PipelineWrapper implements Serializable {
      * Set up of pipeline. Construction of the de registry with the script.
      * @param os : operating system where the pipeline is executed.
      */
-    PipelineWrapper setUp(String os = null, String scm = null) {
+    PipelineWrapper setUp(OsTypes os, String scm = null) {
         //Storing the script (context) to access the script objects as node, stage and sh or git
         StepsContextRegistry.registerDefaultContext(_script, os, scm)
         return this

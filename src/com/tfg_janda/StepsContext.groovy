@@ -1,6 +1,7 @@
 package com.tfg_janda
 
 import com.tfg_janda.console.IConsoleExecutor
+import com.tfg_janda.console.OsTypes
 import com.tfg_janda.console.linux.LinuxConsoleExecutor
 import com.tfg_janda.console.windows.WindowsConsoleExecutor
 import com.tfg_janda.scm.IScm
@@ -9,14 +10,14 @@ import com.tfg_janda.scm.git.GitScm
 class StepsContext implements Serializable {
 
     private _script
-    private _os
+    private OsTypes _os
     private _scm
 
     StepsContext(steps) {
         this._script = steps
     }
 
-    StepsContext setOs(String os) {
+    StepsContext setOs(OsTypes os) {
         _os = os
         this
     }
@@ -29,10 +30,10 @@ class StepsContext implements Serializable {
     IConsoleExecutor getConsoleExecutor() {
         def consoleExecutor
         switch (_os) {
-            case 'linux':
+            case OsTypes.linux:
                 consoleExecutor = LinuxConsoleExecutor.getInstance(this._script)
                 break
-            case 'windows':
+            case OsTypes.windows:
                 consoleExecutor = WindowsConsoleExecutor.getInstance(this._script)
                 break
             default:

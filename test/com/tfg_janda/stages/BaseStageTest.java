@@ -2,7 +2,7 @@ package com.tfg_janda.stages;
 
 import com.tfg_janda.StepsContext;
 import com.tfg_janda.StepsContextRegistry;
-import com.tfg_janda.platform.IConsoleExecutor;
+import com.tfg_janda.console.IConsoleExecutor;
 import org.junit.Before;
 import org.junit.Test;
 

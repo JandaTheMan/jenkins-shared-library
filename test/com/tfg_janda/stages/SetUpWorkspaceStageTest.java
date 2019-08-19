@@ -2,7 +2,7 @@ package com.tfg_janda.stages;
 
 import com.tfg_janda.StepsContext;
 import com.tfg_janda.StepsContextRegistry;
-import com.tfg_janda.platform.IConsoleExecutor;
+import com.tfg_janda.console.IConsoleExecutor;
 import com.tfg_janda.scm.IScm;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class SetUpWorkspaceStageTest {
         SetUpWorkspaceStage stage = new SetUpWorkspaceStage("SetUpDirectory","GIT_URL","GIT_BRANCH","GIT_CREDENTIALS");
         stage.stageSteps();
 
-        verify(bash).removeDirectoryFiles();
+        verify(bash).wipeOutWorkSpace();
         verify(git).cloneAndCheckout("GIT_URL","GIT_BRANCH","GIT_CREDENTIALS");
     }
 }

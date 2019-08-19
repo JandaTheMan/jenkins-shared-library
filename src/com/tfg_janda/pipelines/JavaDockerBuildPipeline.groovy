@@ -2,6 +2,7 @@ package com.tfg_janda.pipelines
 
 import com.tfg_janda.console.OsTypes
 import com.tfg_janda.scm.ScmTypes
+import com.tfg_janda.stages.BuildStage
 import com.tfg_janda.stages.SetUpWorkspaceStage
 
 class JavaDockerBuildPipeline {
@@ -30,6 +31,7 @@ class JavaDockerBuildPipeline {
                         _gitBranch,
                         _gitCredentials
                 ), 'master')
+                .addStageToNode(new BuildStage('Build'),'master')
                 .exec()
     }
 }

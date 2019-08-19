@@ -28,7 +28,7 @@ class StepsContext implements Serializable {
     }
 
     IConsoleExecutor getConsoleExecutor() {
-        def consoleExecutor
+        IConsoleExecutor consoleExecutor
         switch (_os) {
             case OsTypes.linux:
                 consoleExecutor = LinuxConsoleExecutor.getInstance(this._script)
@@ -43,7 +43,7 @@ class StepsContext implements Serializable {
     }
 
     IScm getSourceControlManager() {
-        def sourceControlManager
+        IScm sourceControlManager
         switch (_scm) {
             case 'git':
                 sourceControlManager = GitScm.getInstance(this._script)

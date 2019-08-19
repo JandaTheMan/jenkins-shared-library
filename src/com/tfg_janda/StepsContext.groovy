@@ -5,13 +5,14 @@ import com.tfg_janda.console.OsTypes
 import com.tfg_janda.console.linux.LinuxConsoleExecutor
 import com.tfg_janda.console.windows.WindowsConsoleExecutor
 import com.tfg_janda.scm.IScm
+import com.tfg_janda.scm.ScmTypes
 import com.tfg_janda.scm.git.GitScm
 
 class StepsContext implements Serializable {
 
     private _script
     private OsTypes _os
-    private _scm
+    private ScmTypes _scm
 
     StepsContext(steps) {
         this._script = steps
@@ -22,7 +23,7 @@ class StepsContext implements Serializable {
         this
     }
 
-    StepsContext setScm(String scm) {
+    StepsContext setScm(ScmTypes scm) {
         _scm = scm
         this
     }
@@ -45,7 +46,7 @@ class StepsContext implements Serializable {
     IScm getSourceControlManager() {
         IScm sourceControlManager
         switch (_scm) {
-            case 'git':
+            case ScmTypes.git:
                 sourceControlManager = GitScm.getInstance(this._script)
                 break
             default:

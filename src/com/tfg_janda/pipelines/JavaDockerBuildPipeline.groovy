@@ -1,6 +1,7 @@
 package com.tfg_janda.pipelines
 
 import com.tfg_janda.console.OsTypes
+import com.tfg_janda.scm.ScmTypes
 import com.tfg_janda.stages.SetUpWorkspaceStage
 
 class JavaDockerBuildPipeline {
@@ -22,7 +23,7 @@ class JavaDockerBuildPipeline {
 
     def run() {
         _pipeline
-                .setUp(OsTypes.linux, 'git')
+                .setUp(OsTypes.linux, ScmTypes.git)
                 .addStageToNode(new SetUpWorkspaceStage(
                         'set up workspace',
                         _gitRepo,

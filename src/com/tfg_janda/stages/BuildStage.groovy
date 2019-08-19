@@ -5,7 +5,7 @@ import com.tfg_janda.StepsContextRegistry
 class BuildStage extends BaseStage{
 
 
-    BuildStage(String name) {
+    BuildStage(String name = 'Build') {
         super(name)
     }
 

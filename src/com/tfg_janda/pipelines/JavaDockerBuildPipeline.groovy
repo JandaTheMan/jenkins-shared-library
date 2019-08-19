@@ -31,7 +31,7 @@ class JavaDockerBuildPipeline {
                         _gitBranch,
                         _gitCredentials
                 ), 'master')
-                .addStageToNode(new BuildStage('Build'),'master')
+                .addStageToNode(new BuildStage(),'master')
                 .exec()
     }
 }

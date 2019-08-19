@@ -23,7 +23,7 @@ class SetUpWorkspaceStage extends BaseStage{
         def scm = context.getSourceControlManager()
 
         //Remove all items from working directory
-        console.removeDirectoryFiles()
+        console.wipeOutWorkSpace()
 
         //Download the git project and checkout branch
         scm.cloneAndCheckout(_gitRepo, _gitBranch, _gitCredentials)

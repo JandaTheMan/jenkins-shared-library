@@ -1,12 +1,10 @@
-package com.tfg_janda.platform
+package com.tfg_janda.console
 
 interface IConsoleExecutor {
 
     int exec(String command)
 
-    void error(String errorMessage)
-
     void printMessage(String message)
 
-    def removeDirectoryFiles()
+    def wipeOutWorkSpace()
 }

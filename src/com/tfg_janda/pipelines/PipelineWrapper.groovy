@@ -15,7 +15,7 @@ class PipelineWrapper implements Serializable {
     protected _script
     protected String _node
 
-    protected Map _nodeStages
+    protected  _nodeStages
 
     PipelineWrapper(script, String node) {
         this._script = script

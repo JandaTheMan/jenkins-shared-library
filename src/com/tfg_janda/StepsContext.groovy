@@ -23,7 +23,7 @@ class StepsContext implements Serializable {
         this
     }
 
-    StepsContext setScm(ScmTypes scm) {
+    StepsContext setScm(String scm) {
         _scm = scm
         this
     }
@@ -46,7 +46,7 @@ class StepsContext implements Serializable {
     IScm getSourceControlManager() {
         IScm sourceControlManager
         switch (_scm) {
-            case ScmTypes.git:
+            case 'git':
                 sourceControlManager = GitScm.getInstance(this._script)
                 break
             default:

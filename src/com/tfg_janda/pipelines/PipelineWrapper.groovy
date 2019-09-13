@@ -27,7 +27,7 @@ class PipelineWrapper implements Serializable {
      * Set up of pipeline. Construction of the de registry with the script.
      * @param os : operating system where the pipeline is executed.
      */
-    PipelineWrapper setUp(String os = null, ScmTypes scm = null) {
+    PipelineWrapper setUp(String os = null, String scm = null) {
         //Storing the script (context) to access the script objects as node, stage and sh or git
         StepsContextRegistry.registerDefaultContext(_script, os, scm)
         return this

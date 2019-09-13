@@ -24,7 +24,7 @@ class JavaDockerBuildPipeline {
 
     def run() {
         _pipeline
-                .setUp(OsTypes.linux, ScmTypes.git)
+                .setUp('linux', 'git')
                 .addStageToNode(new SetUpWorkspaceStage(
                         'set up workspace',
                         _gitRepo,

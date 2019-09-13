@@ -18,7 +18,7 @@ class GreetingPipeline {
 
     def run() {
         _pipeline
-                .setUp(OsTypes.linux)
+                .setUp('linux')
                 .addStageToNode(new GreetingStage('Custom Greeting', _greetingMessage), 'master')
                 .addStageToNode(new GreetingStage('Default Greeting'), 'master')
                 .exec()

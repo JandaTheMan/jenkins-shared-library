@@ -11,14 +11,14 @@ import com.tfg_janda.scm.git.GitScm
 class StepsContext implements Serializable {
 
     private _script
-    private OsTypes _os
+    private String _os
     private ScmTypes _scm
 
     StepsContext(steps) {
         this._script = steps
     }
 
-    StepsContext setOs(OsTypes os) {
+    StepsContext setOs(String os) {
         _os = os
         this
     }
@@ -31,10 +31,10 @@ class StepsContext implements Serializable {
     IConsoleExecutor getConsoleExecutor() {
         IConsoleExecutor consoleExecutor
         switch (_os) {
-            case OsTypes.linux:
+            case 'linux':
                 consoleExecutor = LinuxConsoleExecutor.getInstance(this._script)
                 break
-            case OsTypes.windows:
+            case 'windows':
                 consoleExecutor = WindowsConsoleExecutor.getInstance(this._script)
                 break
             default:

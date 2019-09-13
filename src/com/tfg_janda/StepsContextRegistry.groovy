@@ -11,7 +11,7 @@ class StepsContextRegistry implements Serializable {
         _context = context
     }
 
-    static void registerDefaultContext(steps, OsTypes os, ScmTypes scm) {
+    static void registerDefaultContext(steps, String os, ScmTypes scm) {
         _context = new StepsContext(steps)
         _context.setOs(os)
                 .setScm(scm)

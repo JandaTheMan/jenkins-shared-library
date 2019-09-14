@@ -1,7 +1,6 @@
 package com.tfg_janda.pipelines
 
-import com.tfg_janda.console.OsTypes
-import com.tfg_janda.scm.ScmTypes
+
 import com.tfg_janda.stages.BuildStage
 import com.tfg_janda.stages.SetUpWorkspaceStage
 
@@ -12,10 +11,9 @@ class JavaDockerBuildPipeline {
     private _gitBranch
     private _gitCredentials
 
-    JavaDockerBuildPipeline(script, String node, String gitRepo, String gitBranch, String gitCredentials) {
+    JavaDockerBuildPipeline(script, String gitRepo, String gitBranch, String gitCredentials) {
         _pipeline = new PipelineWrapper(
                 script,
-                node
         )
         _gitRepo = gitRepo
         _gitBranch = gitBranch
@@ -25,7 +23,8 @@ class JavaDockerBuildPipeline {
     def run() {
         _pipeline
                 .setUp('linux', 'git')
-                .addStageToNode(new SetUpWorkspaceStage(
+                .addStageToNode(
+                        new SetUpWorkspaceStage(
                         'set up workspace',
                         _gitRepo,
                         _gitBranch,

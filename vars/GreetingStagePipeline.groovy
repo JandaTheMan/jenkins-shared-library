@@ -1,13 +1,10 @@
 import com.tfg_janda.pipelines.GreetingPipeline
 
-def call(
-        String node
-) {
+def call() {
 
     def pipe = new GreetingPipeline(
 
             this,
-            node,
             'Hello alien!'
 
     )

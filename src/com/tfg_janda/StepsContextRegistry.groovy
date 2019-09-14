@@ -1,8 +1,5 @@
 package com.tfg_janda
 
-import com.tfg_janda.console.OsTypes
-import com.tfg_janda.scm.ScmTypes
-
 class StepsContextRegistry implements Serializable {
 
     protected static StepsContext _context

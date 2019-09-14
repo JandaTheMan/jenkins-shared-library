@@ -1,18 +1,16 @@
 package com.tfg_janda
 
 import com.tfg_janda.console.IConsoleExecutor
-import com.tfg_janda.console.OsTypes
 import com.tfg_janda.console.linux.LinuxConsoleExecutor
 import com.tfg_janda.console.windows.WindowsConsoleExecutor
 import com.tfg_janda.scm.IScm
-import com.tfg_janda.scm.ScmTypes
 import com.tfg_janda.scm.git.GitScm
 
 class StepsContext implements Serializable {
 
     private _script
     private String _os
-    private ScmTypes _scm
+    private String _scm
 
     StepsContext(steps) {
         this._script = steps
@@ -38,7 +36,7 @@ class StepsContext implements Serializable {
                 consoleExecutor = WindowsConsoleExecutor.getInstance(this._script)
                 break
             default:
-                throw new Exception('The Context must be initialized with OS')
+                throw new Exception('The Context must be initialized with valid OS')
         }
         consoleExecutor
     }
@@ -50,7 +48,7 @@ class StepsContext implements Serializable {
                 sourceControlManager = GitScm.getInstance(this._script)
                 break
             default:
-                throw new Exception('The Context must be initialized with SCM')
+                throw new Exception('The Context must be initialized with valid SCM')
         }
         sourceControlManager
     }

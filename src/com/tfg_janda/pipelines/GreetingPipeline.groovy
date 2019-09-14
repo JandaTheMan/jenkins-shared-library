@@ -1,6 +1,6 @@
 package com.tfg_janda.pipelines
 
-import com.tfg_janda.console.OsTypes
+
 import com.tfg_janda.stages.GreetingStage
 
 class GreetingPipeline {
@@ -8,10 +8,9 @@ class GreetingPipeline {
     private PipelineWrapper _pipeline
     private String _greetingMessage
 
-    GreetingPipeline(script, String node, String greetingMessage) {
+    GreetingPipeline(script, String greetingMessage) {
         _pipeline = new PipelineWrapper(
                 script,
-                node
         )
         _greetingMessage = greetingMessage
     }

@@ -1,7 +1,6 @@
 import com.tfg_janda.pipelines.JavaDockerBuildPipeline
 
 def call(
-        String node,
         String gitRepo,
         String gitBranch,
         String gitCredentials
@@ -10,7 +9,6 @@ def call(
     def pipe = new JavaDockerBuildPipeline(
 
             this,
-            node,
             gitRepo,
             gitBranch,
             gitCredentials
@@ -26,5 +24,5 @@ def call(
  *   [$class: 'GitSCMSource',
  *    remote: 'git@github.com:JandaTheMan/jenkins-shared-library.git',
  *    credentialsId: 'Github-jandaTheMan-credentials'])
- * GreetingStagePipeline('master')
+ * JavaBuildPipeline('master')
  */

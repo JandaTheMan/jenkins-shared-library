@@ -8,8 +8,8 @@ class SetUpWorkspaceStage extends BaseStage{
     private String _gitBranch
     private String _gitCredentials
 
-    SetUpWorkspaceStage(String name, String gitRepo, String gitBranch, String gitCredentials) {
-        super(name)
+    SetUpWorkspaceStage(String stageName, String gitRepo, String gitBranch, String gitCredentials) {
+        super(stageName)
         _gitRepo = gitRepo
         _gitBranch = gitBranch
         _gitCredentials = gitCredentials

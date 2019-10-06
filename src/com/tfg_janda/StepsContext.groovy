@@ -11,9 +11,11 @@ class StepsContext implements Serializable {
     private _script
     private String _os
     private String _scm
+    private  _executionCommonValues
 
     StepsContext(steps) {
         this._script = steps
+        _executionCommonValues = [:]
     }
 
     StepsContext setOs(String os) {
@@ -51,5 +53,12 @@ class StepsContext implements Serializable {
                 throw new Exception('The Context must be initialized with valid SCM')
         }
         sourceControlManager
+    }
+
+    def setCommonExecutionValue(String key, String value){
+        _executionCommonValues[key] = value
+    }
+    def getExecutionCommmonValue(String key){
+        _executionCommonValues[key]
     }
 }

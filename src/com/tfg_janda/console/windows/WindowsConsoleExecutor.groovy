@@ -21,8 +21,8 @@ class WindowsConsoleExecutor implements IConsoleExecutor{
     }
 
     @Override
-    int exec(String command) {
-        this._steps.bat script: command
+    String exec(String command) {
+        this._steps.bat script: command, returnStdout: true
     }
 
     @Override

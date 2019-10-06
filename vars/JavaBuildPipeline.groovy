@@ -1,28 +1,37 @@
-import com.tfg_janda.pipelines.JavaDockerBuildPipeline
+import com.tfg_janda.pipelines.JavaPipeline
 
 def call(
         String gitRepo,
         String gitBranch,
-        String gitCredentials
+        String gitCredentials,
+        String dockerRegistry,
+        String projectName,
+        String testNode
 ) {
 
-    def pipe = new JavaDockerBuildPipeline(
+    def pipeline = new JavaPipeline(
 
             this,
+            testNode,
             gitRepo,
             gitBranch,
-            gitCredentials
+            gitCredentials,
+            dockerRegistry,
+            projectName
     )
 
-    pipe.run()
+    pipeline.run()
 }
 
-/**
- * Usage in Jenkinsfiles :
- *
- * library identifier: 'shared-liraries-POC@master', retriever: modernSCM(
- *   [$class: 'GitSCMSource',
- *    remote: 'git@github.com:JandaTheMan/jenkins-shared-library.git',
- *    credentialsId: 'Github-jandaTheMan-credentials'])
- * JavaBuildPipeline('master')
+/*
+
+Usage in Jenkinsfile:
+
+library identifier: 'shared-liraries-POC@master', retriever: modernSCM(
+    [$class: 'GitSCMSource',
+     remote: 'git@github.com:JandaTheMan/jenkins-shared-library.git',
+     credentialsId: 'Github-jandaTheMan-credentials'])
+  JavaBuildPipeline($GIT_REPO, $GIT_BRANCH, $GIT_PROJECT_CREDENTIALS, $DOCKER_REGISTRY_URL, $PROJECT_NAME ,$DEPLOY_NODE)
+
  */
+

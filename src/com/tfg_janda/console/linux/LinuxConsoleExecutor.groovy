@@ -22,8 +22,8 @@ class LinuxConsoleExecutor implements IConsoleExecutor, Serializable {
     }
 
     @Override
-    int exec(String command) {
-        this._steps.sh returnStatus: true, script: "$command"
+    String exec(String command) {
+        this._steps.sh script: "$command" , returnStdout: true
     }
 
     @Override

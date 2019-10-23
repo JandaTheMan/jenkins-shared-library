@@ -19,6 +19,6 @@ class DockerDeployStage extends BaseStage{
         def console = StepsContextRegistry.getContext().getConsoleExecutor()
         def tag = StepsContextRegistry.getContext().getExecutionCommmonValue(Variables.GIT_TAG)
         console.exec('docker stop '+_projectName +' || true')
-        console.exec('docker run -d -p 8080:8080 --name '+ _projectName +''+_dockerRegistry+'/'+_projectName +'-artifact:'+tag)
+        console.exec('docker run -d -p 8080:8080 --name '+ _projectName +' '+_dockerRegistry+'/'+_projectName +'-artifact:'+tag)
     }
 }

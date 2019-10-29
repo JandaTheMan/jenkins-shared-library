@@ -25,15 +25,3 @@ def call(
     pipeline.run()
 }
 
-/*
-
-Usage in Jenkinsfile:
-
-library identifier: 'shared-liraries-POC@master', retriever: modernSCM(
-    [$class: 'GitSCMSource',
-     remote: 'git@github.com:JandaTheMan/jenkins-shared-library.git',
-     credentialsId: 'Github-jandaTheMan-credentials'])
-  JavaBuildPipeline($GIT_REPO, $GIT_BRANCH, $GIT_PROJECT_CREDENTIALS, $DOCKER_REGISTRY_URL, $PROJECT_NAME ,$DEPLOY_NODE)
-
- */
-

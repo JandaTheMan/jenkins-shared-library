@@ -6,12 +6,14 @@ def call(
         String gitCredentials,
         String dockerRegistry,
         String projectName,
+        String buildNode,
         String testNode
 ) {
 
     def pipeline = new JavaPipeline(
 
             this,
+            buildNode,
             testNode,
             gitRepo,
             gitBranch,

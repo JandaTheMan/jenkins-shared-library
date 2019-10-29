@@ -1,10 +1,8 @@
 package com.tfg_janda.pipelines
 
-
-import com.tfg_janda.stages.SetUpWorkspaceStage
 import com.tfg_janda.stages.DockerDeployStage
+import com.tfg_janda.stages.SetUpWorkspaceStage
 import com.tfg_janda.stages.java.JavaBuildStage
-import com.tfg_janda.utils.Variables
 
 class JavaPipeline {
 
@@ -15,9 +13,9 @@ class JavaPipeline {
     private String _testNode
     private String _dockerRegistry
     private String _projectName
-    private String _buildNode = Variables.BUILD_NODE
+    private String _buildNode
 
-    JavaPipeline(script, String node, String gitRepo, String gitBranch, String gitCredentials, String dockerRegistry, String projectName) {
+    JavaPipeline(script, String buildNode,String deployTestNode, String gitRepo, String gitBranch, String gitCredentials, String dockerRegistry, String projectName) {
         _pipeline = new PipelineWrapper(
                 script
         )
@@ -26,7 +24,8 @@ class JavaPipeline {
         _gitCredentials = gitCredentials
         _dockerRegistry = dockerRegistry
         _projectName = projectName
-        _testNode = node
+        _buildNode = buildNode
+        _testNode = deployTestNode
     }
 
     def run() {
